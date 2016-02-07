@@ -7,8 +7,8 @@
 
 # Site settings
 title: Ben Fogel
-email: legofneb@gmail.com
-emailLabel: legofneb+com@gmail.com
+email: legofneb+com@gmail.com
+emailLabel: legofneb@gmail.com
 description: © 2016 by Ben Fogel
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://legofneb.github.io" # the base hostname & protocol for your site
