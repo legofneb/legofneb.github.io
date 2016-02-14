@@ -35,7 +35,7 @@ console.log(Person.runs); // outputs: undefined
 
 // null
 Person.name = null;
-console.log(Person.null); // outputs: null
+console.log(Person.name); // outputs: null
 
 ~~~
 
