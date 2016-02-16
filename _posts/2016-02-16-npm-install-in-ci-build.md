@@ -27,6 +27,6 @@ Pretty simple. All it does is takes your local node_modules and packs them up. N
 powershell.exe -nologo -noprofile -command "& { Add-Type -A 'System.IO.Compression.FileSystem'; [IO.Compression.ZipFile]::ExtractToDirectory('nodeModulesBackup.zip', 'node_modules'); }"
 ```
 
-This has now taken our javascript build times from 2-10 minutes to a predictable 45 seconds. I can live with this. Just be sure to add `<Exec Command='.\upack-command.cmd' /> in your build target. You may also have to run `npm rebuild` if the build server runs a different system architecture than your local machine. My Windows 7 node_modules were compatible with a Server 2012 build server.
+This has now taken our javascript build times from 2-10 minutes to a predictable 45 seconds. I can live with this. Just be sure to add `<Exec Command='.\upack-command.cmd' />` in your build target. You may also have to run `npm rebuild` if the build server runs a different system architecture than your local machine. My Windows 7 node_modules were compatible with a Server 2012 build server.
 
 I could optimize this further. The zip command is relatively slow for unpacking the file. For comparison, unpacking a .tar of the node_modules directory took ~5 seconds. I didn't include this since it would require an additional executable, but may do it in the future to save 40 seconds.
