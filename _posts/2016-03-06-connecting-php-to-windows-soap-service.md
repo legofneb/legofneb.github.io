@@ -33,7 +33,6 @@ $namespace = 'https://my.ns';
 $userInfoHeader = new SOAPHeader($namespace, 'UserInfo', array('userid' => 'user', 'password' => 'pw'), false);
 $client->__setSoapHeaders($userInfoHeader);
 $client->CreateRequest(array('params' => 'some parameters to send to server'));
-
 ```
 
 But I kept getting a (400) Bad Request from the server. Since I have no control over the SOAP Service, I had to alter my XML to match their specifications. The documentation had been given in C# and VB, and was intended for windows machines, so I just had to edit the XML to match that of the windows.
@@ -62,7 +61,7 @@ class CustomSoapClient extends SoapClient {
     $request = str_replace( 'xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"', 'xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"', $request);
 
     return parent::__doRequest($request, $location, $action, $version, $one_way);
-  }  
+  }
 }
 
 $client = new CustomSoapClient('https://soap.service/Controller.asmx?WSDL', array());
@@ -70,7 +69,6 @@ $namespace = 'https://my.ns';
 $userInfoHeader = new SOAPHeader($namespace, 'UserInfo', array('userid' => 'user', 'password' => 'pw'), false);
 $client->__setSoapHeaders($userInfoHeader);
 $client->CreateRequest(array('params' => 'some parameters to send to server'));
-
 ```
 
 So that's it. It work! Now this is a very tailored solution to my problem, where my XML is small, and the problems were limited to a small set of tags. This could definitely use some refactoring to be able to scale to larger service calls.
